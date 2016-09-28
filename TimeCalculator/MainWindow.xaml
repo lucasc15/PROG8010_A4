@@ -1,0 +1,27 @@
+﻿<Window x:Class="TimeCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeCalculator"
+        mc:Ignorable="d"
+        Title="Time Calculator" Height="350" Width="525" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.ColumnSpan="2" Content="Enter the Number of Seconds to Convert" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+        <Label Content="Number of seconds: " Grid.Row="1" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+        <Label Content="Converted Time: " Grid.Row="2" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding seconds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,10,10,10" Height="50" Width="150"  FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" TextChanged="TextBox_TextChanged"></TextBox>
+        <Label Grid.Row="2" Grid.Column="1" FontSize="16" Content="{Binding convertedStr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,10,10,10" Width="150" Height="50"></Label>
+        <Button Content="Convert" Click="btnCalculateClick" Grid.Row="4" Grid.ColumnSpan="2"></Button>
+    </Grid>
+</Window>
