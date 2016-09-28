@@ -33,6 +33,7 @@ namespace TimeCalculator
             string convertedUnits;
             float convertedTime;
             bool success = float.TryParse(_seconds, out secondsFloat);
+
             if (!success)
             {
                 convertedStr = "";
@@ -56,6 +57,7 @@ namespace TimeCalculator
                 convertedUnits = "days";
                 convertedTime = secondsFloat / _secsInDay;
             }
+
             formatString(convertedTime, convertedUnits);
         }
         private void formatString(float convertedTime, string convertedUnits)
