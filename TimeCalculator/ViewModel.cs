@@ -32,13 +32,13 @@ namespace TimeCalculator
             float secondsFloat;
             string convertedUnits;
             float convertedTime;
-            Debug.Print(_seconds);
-            if (_seconds != null){
-                secondsFloat = float.Parse(_seconds);
-            } else
+            bool success = float.TryParse(_seconds, out secondsFloat);
+            if (!success)
             {
-                secondsFloat = (float)0;
+                convertedStr = "";
+                return;
             }
+
             if (secondsFloat < _secsInMinute)
             {
                 convertedUnits = "seconds";
@@ -60,7 +60,7 @@ namespace TimeCalculator
         }
         private void formatString(float convertedTime, string convertedUnits)
         {
-            if (convertedTime - Math.Floor(convertedTime) < tol)
+            if (convertedTime - Math.Floor(convertedTime) < tol && Math.Floor(convertedTime) == 1)
             {
                 convertedUnits = convertedUnits.Substring(0, convertedUnits.Length - 1);
             }
