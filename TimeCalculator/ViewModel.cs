@@ -9,9 +9,9 @@ namespace TimeCalculator
 {
     class ViewModel : ObservableObject
     {
-        private float _secsInMinute = (float)60;
-        private float _secsInHour = (float)60 * 60;
-        private float _secsInDay = (float)60 * 60 * 24;
+        private const float kSecsInMinute = (float)60;
+        private const float kSecsInHour = (float)60 * 60;
+        private const float kSecsInDay = (float)60 * 60 * 24;
         private string _seconds;
         private float tol = 0.004f;
         public string seconds
@@ -30,8 +30,9 @@ namespace TimeCalculator
         public void ConvertTime()
         {
             float secondsFloat;
-            string convertedUnits;
             float convertedTime;
+            string convertedUnits;
+            
             bool success = float.TryParse(_seconds, out secondsFloat);
 
             if (!success)
@@ -40,22 +41,22 @@ namespace TimeCalculator
                 return;
             }
 
-            if (secondsFloat < _secsInMinute)
+            if (secondsFloat < kSecsInMinute)
             {
                 convertedUnits = "seconds";
                 convertedTime = secondsFloat;
-            } else if (secondsFloat < _secsInHour)
+            } else if (secondsFloat < kSecsInHour)
             {
                 convertedUnits = "minutes";
-                convertedTime = secondsFloat / _secsInMinute;
-            } else if (secondsFloat < _secsInDay)
+                convertedTime = secondsFloat / kSecsInMinute;
+            } else if (secondsFloat < kSecsInDay)
             {
                 convertedUnits = "hours";
-                convertedTime = secondsFloat / _secsInHour;
+                convertedTime = secondsFloat / kSecsInHour;
             } else
             {
                 convertedUnits = "days";
-                convertedTime = secondsFloat / _secsInDay;
+                convertedTime = secondsFloat / kSecsInDay;
             }
 
             formatString(convertedTime, convertedUnits);
