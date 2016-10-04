@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*
+ * Time Calculator
+ * Assignment #4 PROG8010, Group 1
+ * Author: Lucas Currah, 7674542
+ * Conestoga College
+ * 
+ * Group members:
+ *      Oleksandr Rudavka
+ *      Jonathan Nagata
+ *      Niral Gandhi
+ *      Tanmay Teckchandani
+ *      Priya Tharuman
+ *      Krishna Kanhaiya
+ *      Lucas Currah
+ * 
+ * 3 October, 2016
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +38,6 @@ namespace TimeCalculator
     public partial class MainWindow : Window
     {
         ViewModel vm = new ViewModel();
-        // KeyConverter kc = new KeyConverter();
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +50,7 @@ namespace TimeCalculator
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {   // function for removing not digits from the input variable _seconds
             int _;
             TextBox txtBox = (TextBox)sender;
             for (var i=0; i<txtBox.Text.Length; i++)
